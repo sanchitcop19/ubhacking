@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Register - Brand</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/fonts/fontawesome-all.min.css') }}">
+</head>
+
+<body class="bg-gradient-primary">
+    <div class="container">
+        <div class="card bg-white shadow-lg o-hidden border-0 my-5">
+            <div class="card-body p-0">
+                <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h4 class="text-dark mb-4">Create an Account!</h4>
+                            </div>
+                            <form class="user">
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="firstname" placeholder="First Name" name="first_name"></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="lastname" placeholder="Last Name" name="last_name"></div>
+                                </div>
+                                <div class="form-group"><input class="form-control form-control-user" type="email" id="email" aria-describedby="emailHelp" placeholder="Email Address" name="email"></div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="password" placeholder="Password" name="password"></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="password-confirm" placeholder="Repeat Password" name="password_repeat"></div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control" type="date" name="dob"></div>
+                                    <div class="col-sm-6"><input class="form-control-plaintext border rounded" type="text" id="autocomplete" value="" placeholder="Home Address"></div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control" type="tel" name="mobile" placeholder="Phone Number" inputmode="tel" minlength="10" maxlength="15"></div>
+                                    <div class="col-sm-6"><input class="form-control" type="text" placeholder="Company" name="company"></div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control" type="url" name="website" placeholder="Website"></div>
+                                    <div class="col-sm-6"><input class="form-control" type="url" placeholder="LinkedIn" name="linkedin"></div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control" type="url" name="facebook" placeholder="Facebook"></div>
+                                    <div class="col-sm-6"><input class="form-control" type="url" placeholder="Instagram" name="instagram"></div>
+                                </div><input class="form-control" type="hidden" name="registration-date"><button class="btn btn-primary btn-block text-white btn-user" type="submit">Register Account</button>
+                                <hr>
+                                <hr>
+                            </form>
+                            <div class="text-center"></div>
+                            <div class="text-center"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename = 'assets/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'assets/js/auto-complete.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEaKKXSU1QSKFdZLEnJVN9oO5UgXuTnlk&amp;libraries=places&amp;callback=initAutocomplete"></script>
+    <script src="{{ url_for('static', filename = 'assets/js/theme.js') }}"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAUiX0NhsaxU_jC9h80FUD2x4AeC3tPlzA",
+    authDomain: "ubhacking.firebaseapp.com",
+    databaseURL: "https://ubhacking.firebaseio.com",
+    projectId: "ubhacking",
+    storageBucket: "ubhacking.appspot.com",
+    messagingSenderId: "160792481232",
+    appId: "1:160792481232:web:2421e3201968a046d2fdd5",
+    measurementId: "G-E6ZECWG8KB"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+</body>
+
+</html>
