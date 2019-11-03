@@ -1,0 +1,24 @@
+.glowing-border {
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;
+}
+
+.glowing-border:focus {
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;
+}
+
+glowing-border {
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;
+}
+
+newcard {
+  border-color: #69c9ff!important;
+  border-style: solid!important;
+  border-width: thick!important;
+}
+
