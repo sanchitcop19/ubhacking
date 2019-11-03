@@ -39,9 +39,11 @@ first_email, second_email = None, None
 store = {
     "mtb": "M&T Bank",
     "buffalo": "University at Buffalo",
-    "gmail": "Google"
-}
+    "gmail": "Google",
+    "github": "GitHub",
 
+}
+'''
 job_store = {
     "applied": [
         "Google",
@@ -60,7 +62,9 @@ job_store = {
         "Lyft"
     ]
 }
+'''
 
+job_store = db.collection(u'job_store').document(u'1').get().to_dict()
 @app.route('/add_friend')
 def add_friend():
     global current_otp, first_email
@@ -112,6 +116,7 @@ def index():
 
 @app.route('/dashboard')
 def dashboard():
+    job_store = db.collection(u'job_store').document(u'1').get().to_dict()
     return render_template('dashboard.html', applied = job_store["applied"], offers = job_store["offers"], rejected = job_store["rejected"])
 
 @app.route('/update')
@@ -122,7 +127,25 @@ def update():
     domain = domain[1:domain.index('.')]
     domain = store[domain]
     # call ML model on message
-    return jsonify({domain.capitalize(): message, "status": "rejected" if "unfortunately" in message else "applied"})
+    company = domain.capitalize() if domain.islower() else domain
+    status = ""
+    if "unfortunately" in message or "unable" in message:
+        job_store["applied"].remove(company)
+        status = "rejected"
+    elif "congratulations" in message:
+        job_store["applied"].remove(company)
+        status = "offers"
+    elif "has been received" in message:
+        status = "applied"
+    if not status:
+        return redirect(url_for('dashboard'))
+    if company in job_store[status]:
+        return jsonify({})
+    job_store[status].append(company)
+
+    doc_ref = db.collection(u'job_store').document(u'1')
+    doc_ref.set(job_store)
+    return jsonify({company: message, "status": status})
 
 if __name__ == '__main__':
     app.run(debug = True)
