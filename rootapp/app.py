@@ -112,12 +112,12 @@ def register():
 
 @app.route('/')
 def index():
-    return "<h1>Fuck off</h1>"
+    return redirect(url_for('dashboard'))
 
 @app.route('/dashboard')
 def dashboard():
     job_store = db.collection(u'job_store').document(u'1').get().to_dict()
-    return render_template('dashboard.html', applied = job_store["applied"], offers = job_store["offers"], rejected = job_store["rejected"])
+    return render_template('dashboard.html', applied = job_store["applied"][::-1], offers = job_store["offers"][::-1], rejected = job_store["rejected"][::-1])
 
 @app.route('/update')
 def update():
